@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
         //let's validate logging user
     const { error } = loginValidation(req.body)
     if (error) {
-        return res.status(400).send({ error: error.details[0].message })
+        return res.status(400).send({ error: `here1 ${error.details[0].message}` })
     }
 
     // if email exists in database
@@ -65,9 +65,8 @@ router.post('/login', async (req, res) => {
     res.header('auth-token', token).send({ token: token, user: user._id, sector: user.sector })
     } catch (err){
         console.log(err)
-        res.status(400).send({ error: err })
+        res.status(400).send({ error: `err ${err}` })
     }
-    
 })
 
 module.exports = router
