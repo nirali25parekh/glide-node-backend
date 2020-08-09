@@ -12,6 +12,7 @@ module.exports = function (req, res, next) {
         req.user = verified     // put the userId in request.user
         next()
     } catch (err) {
-        res.status(400).send('Invalid Token')
+        res.status(400).send('Invalid Token..')
+        next()
     }
 }

@@ -3,13 +3,19 @@
 const router = require('express').Router()
 const verify = require('./verifyToken')
 
-router.get('/', verify, async (req, res) => {
-    res.json({
-        posts: {
-            title: 'my first post ',
-            description: 'hhelloo'
-        }
-    })
+router.get('/', async (req, res) => {
+    try {
+        res.json({
+            posts: {
+                title: 'my first post ',
+                description: 'hhelloo new'
+            }
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(400).send({ error: err })
+    }
+
 })
 
 module.exports = router
