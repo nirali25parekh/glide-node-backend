@@ -27,16 +27,5 @@ app.use(cors());
 app.use('/api/user', authRoute)
 app.use('/api/posts', postRoute)
 
-
-// step3: deployment
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('../frontend/build'))
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '/frontend/build/index.html')) //relative path
-    })
-}
-
-
-
 const PORT = process.env.PORT || 8000 // step 1 deployment
 app.listen(PORT, ()=> console.log('Server running on port 8000'.bgMagenta))
